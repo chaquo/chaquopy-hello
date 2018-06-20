@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.chaquo.python'
 
 android {
     compileSdkVersion 26
@@ -9,6 +10,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        python {
+            // If Chaquopy fails to find Python on your build machine, enable the following
+            // line and edit it to point to a Python 2.7 or 3.3+ executable.
+            // buildPython "C:/Python36/python.exe"
+
+            // This is the version of Python to build into your app. Options
+            // are 2.7.15 and 3.6.5.
+            version "3.6.5"
+
+            staticProxy "hello"
+        }
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {
